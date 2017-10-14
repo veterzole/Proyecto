@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+		<title>Realizar resevacion</title>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/css/bootstrapValidator.min.js}"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+
+<body>
+	<div>
+    		<header>
+    			<nav class="navbar navbar-default navbar-static-top navbar-inverse">
+    				<div class="container-fluid">
+    					<div class= "navbar-header">
+    						<button type="button" class="navbar-toggle collapsed" data-toggle="collpse" data-target="#navbar-1">
+    							<span class="sr-only">Menu</span>
+    							<span class="icon-bar"></span>
+    							<span class="icon-bar"></span>
+    							<span class="icon-bar"></span>    							
+    						</button>
+    						<a href="/" class="navbar-brand"  >UACM</a>
+    					</div>
+    					<div class="collapse navbar-collapse" id="navbar-1">
+    						<ul class="nav navbar-nav">
+    							<li class= "active"><a >Rerservacion</a></li>
+    							<li><a href="/sitio">Sitio</a></li>
+    							<li><a href="/reportes" >Reportes</a></li>
+    							<li><a href="/area" >Areas</a></li>
+    						</ul>
+    					</div>
+    				</div>
+    			</nav>
+    		</header>
+    	</div>
+    	
+    	<div class="container">
+    		<div class="row">
+    		<h1>Universidad Autónoma de la Ciudad de México<small>   UACM STL</small></h1>
+    		</div>
+    	</div>
+    	
+    	<div class="container">
+			<div class ="row">
+				<h3>Registro de evento<small>    Por un dia </small></h3>
+			</div>
+		</div>
+    	
+    	
+    	<div class="container">
+			<br></br>
+			<form method="post" th:action="@{/recibirReservacion}">
+				<!-- Cambio para enlazan en la base datos -->
+				<div class="form-grup">
+					<label for = "nombre">Area</label>
+					<input class="form-control" type="text"  placeholder="" name="area" required="required"/>
+				</div>
+				
+				<div class="form-grup">
+					<label for = "nombre">Nombre del soliciatante:</label>
+					<input class="form-control" type="text"  placeholder="Nombre del solicitante" name="nombre" required="required"/>
+				</div>
+				
+				<div class="form-grup">
+					<br></br>
+					<br></br>
+					<label for = "diaEvento">Fecha del evento </label>	
+					<input type="date" name="fecha" required="required"/>
+					<label for = "horaInicio">Hora incio:</label>
+					<input type="time"  name="horaInicio" value="12:00:00" max="21:30:00" min="07:00:00" step="1800" required="required"/>
+					<label for = "horaFinal">Hora final:</label>
+					<input type="time"  name="horaFin" value="13:00:00" max="22:00:00" min="07:30:00" step="1800" required="required"/>
+					<label for = "nPersonas">Numero de asistentes</label>	
+					<input type="text" name="nPersonas" required="required"/>
+				</div>
+				<div class="form-grup">
+					<br></br>
+					<br></br>
+					<label for = "tipoEvento">Tipo Evento</label>	
+					<select class="form-control" name="evento">
+ 			 			<option value="CLASES">CLASES</option>
+  						<option value="TITULACION">TITULACION</option>
+  						<option value="ACTIVIDADES ACADEMICAS">ACTIVIDADES ACADEMICAS</option>
+  						<option value="ORGANOS DE GOBIERNO">ORGANOS DE GOBIERNO</option>
+  						<option value="DIFUSION CULTURAL">DIFUSION CULTURAL</option>
+  						<option value="C SERVICIOS ESTUDIANTILES">C SERVICIOS ESTUDIANTILES</option>
+  						<option value="ADMINISTRACION">ADMINISTRACION</option>
+  						<option value="SUTUACM">SUTUACM</option>
+  						<option value="EXTERNOS">EXTERNOS</option>
+			   		</select>
+				</div>
+				<!--Ponerlo con la base de datos-->
+				<div class="form-grup">
+					<br></br>
+					<br></br>
+					<label for = "espacio">Aula o espacio</label>
+					<select class="form-control"  name="aula">
+ 			 			<option value="Agora">Agora</option>
+  						<option value="Domo">Domo</option>
+  						<option value="Umbral">Umbral</option>
+  						<option value="A201">A201</option>
+  						<option value="A206">A206</option>
+  						<option value="A215">A215</option>
+  						<option value="B101">B101</option>
+  						<option value="B115">B115</option>
+  						<option value="B216">B216</option>
+  						<option value="B307">B307</option>
+  						<option value="C012">C012</option>
+  						<option value="C101">C101</option>
+  						<option value="C107">C107</option>
+  						<option value="C216">C216</option>
+  						<option value="C207">C207</option>
+			  	 </select>
+			</div>
+			
+			<div class="form-grup" data-toggle="validator">
+			<br></br><br></br>
+				<label for = "Correo">Correo Electronico</label>
+				<div class="controls">
+					<input class="form-control"  type="email"  placeholder="ejemplo@gmail.com" name="correo" required="required"/>
+					<p class="help-block"></p>
+				</div>
+			</div>		
+			
+				<div class="container">
+			<br></br>
+			<br></br>
+		
+				<label for = "listaEquipos">Reservacion de Equipos</label>
+				<br></br>
+				<label for = "equipo">CAÑON</label>
+				<input type="checkbox" name="equipo" id="equipo"  value="CANON"/>
+				
+				<label for = "equipo1">DVD</label>
+				<input  type="checkbox" name="equipo" id="equipo"  value="DVD"/>
+				
+				<label for = "equipo2">TV</label>
+				<input  type="checkbox" name="equipo" id="equipo"  value="TV"/>
+				
+				<label for = "equipo3">VHS</label>
+				<input  type="checkbox" name="equipo" id="equipo"  value="VHS"/>
+				
+				<label for = "equipo4">PROY ACET</label>
+				<input type="checkbox"  name="equipo" id="equipo"  value="PROY ACET"/>
+				
+				<label for = "equipo5">GRABADORA</label>
+				<input type="checkbox" name="equipo" id="equipo"  value="GRABADORA"/> 
+				
+				<label for = "equipo6">COMBO</label>
+				<input type="checkbox" name="equipo" id="equipo"  value="COMBO"/>
+				
+				<label for = "equipo7">CPU Y ACCESORIOS</label>
+				<input type="checkbox" name="equipo" id="equipo"  value="CPU Y ACCESORIOS"/>
+				
+				<label for = "equipo8">LAP-TOP</label>
+				<input type="checkbox" name="equipo" id="equipo"  value="LAP-TOP"/>
+				
+				<label for = "equipo9">AUDIO FENDELL</label>
+				<input type="checkbox" name="equipo" id="equipo"  value="AUDIO FENDELL"/>
+				
+				<label for = "equipo10">BOCINAS</label>
+				<input type="checkbox" name="equipo" id="equipo"  value="BOCINAS"/>
+				
+				<label for = "equipo11">MICROFONO</label>
+				<input type="checkbox" name="equipo" id="equipo"  value="MICROFONO"/>
+				
+				<label for = "equipo12">PROY DE DIAPOSITIVA</label>
+				<input type="checkbox" name="equipo" id="equipo"  value="PROY DE DIAPOSITIVA"/>
+				
+				<label for = "equipo13">GABINETE</label>
+				<input type="checkbox" name="equipo" id="equipo"  value="GABINETE"/>
+				
+				<label for = "equipo14">ENFRIADOR</label>
+				<input type="checkbox" name="equipo" id="equipo"  value="ENFRIADOR"/>
+				
+				<label for = "equipo15">PEDESTAL</label>
+				<input type="checkbox" name="equipo" id="equipo"  value="PEDESTAL"/>
+				
+				<label for = "equipo16">CAFETERA</label>
+				<input type="checkbox" id="equipo" name="equipo" value="CAFETERA"/>
+			</div>
+			
+			
+					<br></br>
+					<input class="btn btn-lg  btn-primary" type="submit" value="Registrar"/>
+					
+			</form>
+			</div>
+				
+		
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> <!-- or use local jquery -->
+	<script src="js/bootstrapValidation.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angular-ui-router/1.0.0-rc.1/angular-ui-router.min.js"></script>
+    <script src="js/bootstrp.js"></script>
+</body>
+
+</html>
